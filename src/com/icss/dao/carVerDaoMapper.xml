@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icss.dao.Car_verDao">
+
+
+	<insert id="insertCar_ver" parameterType="Car_ver" keyProperty="verid"
+		useGeneratedKeys="true">
+		
+		INSERT INTO car_version (brand,family,ver,displacement)
+		VALUES(#{brand},#{family},#{ver},#{displacement});
+
+	</insert>
+
+</mapper>

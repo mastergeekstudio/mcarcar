@@ -1,0 +1,49 @@
+body{
+	width: 900px;
+	margin: 0 auto;
+	font-size: 30px;
+	padding: 10px;
+	
+}
+
+.title{
+	font-family: "微软雅黑";
+	font-size:120%;
+	font-style: normal;
+}
+
+li:nth-child(odd){
+	background:#E5E5E5;
+	margin-top: 10px;
+	
+	}
+	
+
+	
+label{
+	
+	color: red;
+	font-size: 120%;
+}
+
+span{
+	
+	margin: 20px 80px 20px 0px;
+}
+
+.chart{
+	height: 800px;
+	background-color: #CCCCCC;
+}
+
+canvas{
+	background-color: #0sdsdf;
+}
+
+ul li{
+	list-style: none;
+	padding: 10px auto;
+}
+
+
+

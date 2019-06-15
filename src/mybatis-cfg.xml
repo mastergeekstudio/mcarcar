@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.icss.entity.Car_ver" alias="car_ver" />
+		<typeAlias type="com.icss.entity.Pro" alias="pro" />
+		<typeAlias type="com.icss.entity.Car_condition" alias="car_con" />
+		<typeAlias type="com.icss.entity.query_result" alias="result" />
+		
+	</typeAliases>
+	<environments default="t1">
+		<environment id="t1">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://127.0.0.1:13310/carmdb?characterEncoding=utf8" />
+				<property name="username" value="root" />
+				<property name="password" value="Dlsjy123" />
+			</dataSource>
+
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/icss/dao/proDaoMapper.xml" />
+		<mapper resource="com/icss/dao/carConDaoMapper.xml" />
+		<mapper resource="com/icss/dao/carVerDaoMapper.xml" />
+	</mappers>
+</configuration>

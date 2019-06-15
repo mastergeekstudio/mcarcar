@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icss.dao.ProDaoBatis">
+
+	<resultMap type="pro" id="homeList">
+		<id property="proid" column="proid" /><!-- 主键 -->
+		<result property="mileage" column="mileage" /><!-- 非主键 -->
+		<result property="viewcount" column="viewcount" /><!-- 非主键 -->
+		<result property="coverimg" column="coverimg" /><!-- 非主键 -->
+		<result property="cost" column="cost" /><!-- 非主键 -->
+		<result property="date_reg_car" column="date_reg_car" /><!-- 非主键 -->
+		<result property="license_date" column="license_date" /><!-- 非主键 -->
+		<result property="actual_price" column="actual_price" /><!-- 非主键 -->
+		<result property="price" column="price" /><!-- 非主键 -->
+		<result property="emission_level" column="emission_level" /><!-- 
+			非主键 -->
+		<result property="car_home" column="car_home" /><!-- 非主键 -->
+		<result property="cost" column="cost" /><!-- 非主键 -->
+		<result property="actual_price" column="actual_price" /><!-- 非主键 -->
+		<result property="license_date" column="license_date" /><!-- 非主键 -->
+		<result property="date_reg_car" column="date_reg_car" /><!-- 非主键 -->
+		<association property="ver" resultMap="car_ver">
+
+		</association>
+	</resultMap>
+	<resultMap id="car_ver" type="car_ver">
+		<!-- car_ver的映射 -->
+		<id property="verid" column="verid" />
+		<result property="brand" column="brand" />
+		<result property="family" column="family" />
+		<result property="ver" column="ver" />
+		<result property="model" column="model" />
+		<result property="gearbox" column="gearbox" />
+		<result property="displacement" column="displacement" />
+	</resultMap>
+
+	<select id="showCarInSell" resultMap="homeList">
+		SELECT * from
+		(select
+		verid,
+		proid,mileage ,price,coverimg,car_home,viewcount from
+		pro p
+		where
+		status_trans='1') p ,car_version cv where
+		p.verid=cv.verid;
+	</select>
+
+	 <select id="listPro" resultMap="homeList" parameterType="int">
+		SELECT * from (select
+		verid,proid,mileage ,cost,actual_price,car_home,viewcount
+		,
+		license_date, date_reg_car, date_deal from pro where status_trans='1') p
+		,car_version cv where p.verid=cv.verid and YEAR(date_deal)=#{0};
+	</select>
+	<select id="selSalesByVerid" resultType="result">
+
+		SELECT verid ,
+		DATE_FORMAT(date_deal,'%m') as month_d ,COUNT(*) as result from pro
+		WHERE YEAR(date_deal)=#{1} and verid=#{0} GROUP BY month_d
+
+	</select>
+
+	<select id="selPriceMovementByVerid" resultType="result">
+
+		SELECT verid ,
+		DATE_FORMAT(date_deal,'%m') as month_d ,MAX(actual_price) as result
+		from pro
+		WHERE YEAR(date_deal)=#{1} and verid=#{0} GROUP BY month_d
+
+	</select>  
+
+	<!-- <insert id="insertNewPro" > </insert> -->
+	<insert id="inertNewPro" parameterType="pro">
+		INSERT INTO pro
+		VALUES(default,#{verid.verid},1,#{sn},#{engine_sn},#{mileage},#{license_plate},#{license_date},#{emission_level},#{car_home},#{transfor_times},#{cost},#{price},#{actual_price},#{date_reg_car},#{condition_car},#{date_deal},1,#{buyerid},#{coverimg},#{imgdetial},null);
+	</insert>
+
+</mapper>

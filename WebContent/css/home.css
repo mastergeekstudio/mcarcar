@@ -1,0 +1,99 @@
+
+body{
+	margin:20px;
+	padding: 20px;
+	width:1000px;
+}
+hr{
+	border-style: dashed;
+	margin: 10px;
+}
+ul li{
+	list-style: none;
+}
+
+
+
+#menu ul{
+	display:flex;
+	justify-content:space-between;
+	flex-wrap:wrap;
+	margin: 20px;
+
+}
+
+a[href="inputPro.do"]{
+	color:#ffffff;
+	text-decoration:none;
+}
+
+a[href="inputPro.do"]:hover{
+	font-size:200%;
+}
+
+#menu li{
+	font-size: 50px;
+	
+}
+#menu{
+		background-color: rgba(1,1,1,0.2);
+		padding: 2px;
+	
+}
+#main ul{
+	margin-left:350px;
+	width: auto;
+	font-size: 220%;
+	height: 300px;
+}
+
+#main li{
+	margin: 20px;
+	
+}
+.carImg{
+	float: left;
+	width:400px;
+	height: 300px;
+}
+.item{
+	width: 100%;
+	height: 300px;
+	margin-bottom: 20px;
+}
+
+.price{
+	color: red;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	font-size: 120%;
+}
+
+.count{
+	float: right;
+	vertical-align: bottom;
+}
+
+
+
+.add_button_left{
+	float:left;
+	background-color: #ccc;
+	width:400px;
+	line-height:150px;
+	vertical-align: middle;
+	font-size: 500%;
+	color:#ffffff;
+	text-align: center;
+}
+
+.add_button_right{
+	float:right;	
+	background-color: #ccc;
+	width:550px;
+	line-height:150px;
+	vertical-align: middle;
+	font-size: 500%;
+	color:#ffffff;
+	text-align: center;
+}
